@@ -10,7 +10,7 @@ class Api::DepartmentsController < ApplicationController
   end
 
   def create
-    Department = Department.new(department_params)
+    department = Department.new(department_params)
 
     if department.save
       render json: department
