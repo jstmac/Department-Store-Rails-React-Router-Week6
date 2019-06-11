@@ -7,8 +7,8 @@ const Navbar = () => (
     <Link to='/'>
       <Menu.Item>Home</Menu.Item>
     </Link>
-    <Link to='/item'>
-      <Menu.Item>Item</Menu.Item>
+    <Link to='/Departments'>
+      <Menu.Item>Departments</Menu.Item>
     </Link>
   </Menu>
 );

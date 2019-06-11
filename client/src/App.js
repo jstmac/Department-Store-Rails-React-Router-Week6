@@ -1,10 +1,11 @@
 import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./components/Home";
-import Item from "./components/Item";
 import NoMatch from "./components/NoMatch";
 import { Container } from "semantic-ui-react";
 import Navbar from "./components/Navbar";
+import Departments from "./components/Departments";
+// import Items from "./components/Item";
 
 const App = () => (
   <Fragment>
@@ -12,7 +13,7 @@ const App = () => (
     <Container>
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/item' component={Item} />
+        <Route exact path='/departments' component={Departments} />
         <Route component={NoMatch} />
       </Switch>
     </Container>
