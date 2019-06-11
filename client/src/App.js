@@ -4,9 +4,11 @@ import Home from "./components/Home";
 import Item from "./components/Item";
 import NoMatch from "./components/NoMatch";
 import { Container } from "semantic-ui-react";
+import Navbar from "./components/Navbar";
 
 const App = () => (
   <Fragment>
+    <Navbar />
     <Container>
       <Switch>
         <Route exact path='/' component={Home} />
