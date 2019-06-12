@@ -6,14 +6,29 @@ class DepartmentsForm extends React.Component {
   defaultValues = { name: "", description: "" };
   state = { ...this.defaultValues };
 
+  componentDidMount = () => {
+    if (this.props.department) {
+      this.setState({
+        name: this.props.department.name,
+        description: this.props.department.description
+      });
+    }
+  };
+
   handleSubmit = e => {
     e.preventDefault();
     const department = { ...this.state };
-    axios.post("/api/departments", department).then(res => {
-      this.props.history.push("/departments");
-    });
-    //TODO: make api POST request
-    this.setState({ ...this.defaultValues });
+    if (this.props.department) {
+      axios.put(`/api/departments/${this.props.department.id}`, department);
+      this.props.toggleShowForm();
+      this.props.updateState(this.state.name, this.state.description);
+    } else {
+      axios.post("/api/departments", department).then(res => {
+        this.props.history.push("/departments");
+      });
+      //TODO: make api POST request
+      this.setState({ ...this.defaultValues });
+    }
   };
 
   handleChange = e => {
@@ -28,7 +43,7 @@ class DepartmentsForm extends React.Component {
 
     return (
       <div>
-        <Header as='h1'>New Department</Header>
+        <Header as='h1'>Department</Header>
         <Form onSubmit={this.handleSubmit}>
           <Form.Group widths='equal'>
             <Form.Input

@@ -12,10 +12,10 @@ class Departments extends React.Component {
     });
   }
 
-  deleteDepartment = id => {
-    axios.delete(`/api/departments/${id}`).then(res => {
+  deleteDepartment = zebra => {
+    axios.delete(`/api/departments/${zebra}`).then(res => {
       const { departments } = this.state;
-      this.setState({ department: departments.filter(d => d.id !== id) });
+      this.setState({ departments: departments.filter(d => d.id !== zebra) });
     });
   };
 
@@ -38,7 +38,7 @@ class Departments extends React.Component {
             icon
             color='red'
             size='tiny'
-            onClick={() => this.deleteDepartment.id}
+            onClick={() => this.deleteDepartment(department.id)}
             style={{ marginLeft: "15px" }}
           >
             <Icon name='trash' />
