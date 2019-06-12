@@ -1,9 +1,7 @@
 import React from "react";
-import { Card, Header, Button } from "semantic-ui-react";
+import { Card, Header, Button, Icon } from "semantic-ui-react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
-// const Departments = () => <h1>Departments</h1>;
 
 class Departments extends React.Component {
   state = { departments: [] };
@@ -15,14 +13,10 @@ class Departments extends React.Component {
   }
 
   deleteDepartment = id => {
-    axios
-      .delete(`api/departments/${id}`)
-      //TODO make api call to delete department
-      //TODO remove it from state
-      .then(res => {
-        const { departments } = this.state;
-        this.setState({ department: departments.filter(d => d.id !== id) });
-      });
+    axios.delete(`/api/departments/${id}`).then(res => {
+      const { departments } = this.state;
+      this.setState({ department: departments.filter(d => d.id !== id) });
+    });
   };
 
   renderDepartments = () => {
@@ -39,6 +33,15 @@ class Departments extends React.Component {
         <Card.Content extra>
           <Button as={Link} to={`/departments/${department.id}`} color='blue'>
             View
+          </Button>
+          <Button
+            icon
+            color='red'
+            size='tiny'
+            onClick={() => this.deleteDepartment.id}
+            style={{ marginLeft: "15px" }}
+          >
+            <Icon name='trash' />
           </Button>
         </Card.Content>
       </Card>
