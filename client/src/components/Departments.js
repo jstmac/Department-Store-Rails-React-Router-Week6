@@ -14,19 +14,30 @@ class Departments extends React.Component {
     });
   }
 
+  deleteDepartment = id => {
+    axios
+      .delete(`api/departments/${id}`)
+      //TODO make api call to delete department
+      //TODO remove it from state
+      .then(res => {
+        const { departments } = this.state;
+        this.setState({ department: departments.filter(d => d.id !== id) });
+      });
+  };
+
   renderDepartments = () => {
     const { departments } = this.state;
 
     if (departments.length <= 0) return <h2>No Departments</h2>;
     return departments.map(department => (
-      <Card>
+      <Card key={department.id}>
         <Card.Content>
           <Card.Header>{department.name}</Card.Header>
           <Card.Meta>{department.description}</Card.Meta>
           <Card.Description>{department.description}</Card.Description>
         </Card.Content>
         <Card.Content extra>
-          <Button as={Link} to={"/departments/${product.id}"} color='blue'>
+          <Button as={Link} to={`/departments/${department.id}`} color='blue'>
             View
           </Button>
         </Card.Content>
@@ -42,6 +53,7 @@ class Departments extends React.Component {
         <Button as={Link} color='blue' to='/departments/new'>
           Add Department
         </Button>
+
         <br />
         <br />
         <Card.Group>{this.renderDepartments()}</Card.Group>

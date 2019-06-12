@@ -3,16 +3,19 @@ import axios from "axios";
 import { Button, Header, Segment } from "semantic-ui-react";
 
 class DepartmentView extends React.Component {
-  state = { Department: {} };
+  state = { department: {} };
 
   componentDidMount() {
-    axios.get(`/api/departments/${this.props.match.params.id}`).then(res => {
-      this.state({ product: res.data });
+    const { id } = this.props.match.params;
+    axios.get(`/api/departments/${id}`).then(res => {
+      this.setState({ department: res.data });
     });
   }
 
   render() {
-    const { name, description } = this.state.Department;
+    const {
+      department: { name, description }
+    } = this.state;
 
     return (
       <div>
