@@ -1,6 +1,7 @@
 import React from "react";
-import { Card, Header } from "semantic-ui-react";
+import { Card, Header, Button } from "semantic-ui-react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 // const Departments = () => <h1>Departments</h1>;
 
@@ -24,6 +25,11 @@ class Departments extends React.Component {
           <Card.Meta>{department.description}</Card.Meta>
           <Card.Description>{department.description}</Card.Description>
         </Card.Content>
+        <Card.Content extra>
+          <Button as={Link} to={"/departments/${product.id}"} color='blue'>
+            View
+          </Button>
+        </Card.Content>
       </Card>
     ));
   };
@@ -32,6 +38,11 @@ class Departments extends React.Component {
     return (
       <div>
         <Header as='h1'>Departments</Header>
+        <br />
+        <Button as={Link} color='blue' to='/departments/new'>
+          Add Department
+        </Button>
+        <br />
         <br />
         <Card.Group>{this.renderDepartments()}</Card.Group>
       </div>
