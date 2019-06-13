@@ -8,6 +8,7 @@ import Departments from "./components/Departments";
 import DepartmentsForm from "./components/DepartmentsForm";
 import DepartmentView from "./components/DepartmentView";
 import Items from "./components/Items";
+import GitHubStyled from "./components/GitHubStyled";
 
 // import Items from "./components/Item";
 
@@ -18,9 +19,10 @@ const App = () => (
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/departments' component={Departments} />
+        <Route exact path='/departments/:id/items' component={Items} />
+        <Route exact path='/departments/github' component={GitHubStyled} />
         <Route exact path='/departments/new' component={DepartmentsForm} />
         <Route exact path='/departments/:id' component={DepartmentView} />
-        <Route exact path='/departments/:id/items' component={Items} />
         <Route component={NoMatch} />
       </Switch>
     </Container>

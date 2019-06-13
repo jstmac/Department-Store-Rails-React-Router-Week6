@@ -7,9 +7,9 @@ class Items extends React.Component {
   state = { items: [] };
 
   componentDidMount() {
-    const { id } = this.props;
+    const { department } = this.props;
 
-    axios.get(`/api/departments/${id}/items`).then(res => {
+    axios.get(`/api/departments/${department}/items`).then(res => {
       this.setState({ items: res.data });
     });
   }
@@ -26,15 +26,18 @@ class Items extends React.Component {
 
     if (items.length <= 0) return <h2>No Items</h2>;
     return items.map(item => (
-      <Button
-        icon
-        color='red'
-        size='tiny'
-        onClick={() => this.deleteItem(item.id)}
-        style={{ marginLeft: "15px" }}
-      >
-        <Icon name='trash' />
-      </Button>
+      <li>
+        {item.name} {item.price}
+        <Button
+          icon
+          color='red'
+          size='tiny'
+          onClick={() => this.deleteItem(item.id)}
+          style={{ marginLeft: "15px" }}
+        >
+          <Icon name='trash' />
+        </Button>
+      </li>
     ));
   };
 
@@ -46,8 +49,7 @@ class Items extends React.Component {
         <Button as={Link} color='blue' to='/departments/items/new'>
           Add Item
         </Button>
-
-        {this.renderItems()}
+        <ul>{this.renderItems()}</ul>
       </div>
     );
   }

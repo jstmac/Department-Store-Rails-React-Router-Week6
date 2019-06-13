@@ -4,11 +4,14 @@ import { Menu } from "semantic-ui-react";
 
 const Navbar = () => (
   <Menu>
-    <Link to='/'>
+    <Link to='/' color='blue'>
       <Menu.Item>Home</Menu.Item>
     </Link>
     <Link to='/Departments'>
       <Menu.Item>Departments</Menu.Item>
+    </Link>
+    <Link to='/Departments/GitHubStyled'>
+      <Menu.Item>Git Hub</Menu.Item>
     </Link>
   </Menu>
 );
