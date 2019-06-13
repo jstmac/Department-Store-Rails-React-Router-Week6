@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Departments from "./components/Departments";
 import DepartmentsForm from "./components/DepartmentsForm";
 import DepartmentView from "./components/DepartmentView";
+import Items from "./components/Items";
 
 // import Items from "./components/Item";
 
@@ -19,6 +20,7 @@ const App = () => (
         <Route exact path='/departments' component={Departments} />
         <Route exact path='/departments/new' component={DepartmentsForm} />
         <Route exact path='/departments/:id' component={DepartmentView} />
+        <Route exact path='/departments/:id/items' component={Items} />
         <Route component={NoMatch} />
       </Switch>
     </Container>

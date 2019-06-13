@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Button, Header, Segment } from "semantic-ui-react";
 import DepartmentsForm from "./DepartmentsForm";
+import Items from "./Items";
 
 class DepartmentView extends React.Component {
   state = { department: {}, showForm: false };
@@ -52,6 +53,7 @@ class DepartmentView extends React.Component {
           <Segment>
             <Header as='h1'>{name}</Header>
             <Header as='h3'>{description}</Header>
+            <Items department={this.props.match.params.id} />
           </Segment>
         )}
       </div>
